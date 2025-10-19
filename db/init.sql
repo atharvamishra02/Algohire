@@ -1,4 +1,4 @@
--- simple schema for events, subscriptions, deliveries, and idempotency
+
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
 CREATE TABLE IF NOT EXISTS subscriptions (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -31,6 +31,6 @@ CREATE TABLE IF NOT EXISTS deliveries (
   updated_at timestamptz DEFAULT now()
 );
 
--- index for quick lookup
+
 CREATE INDEX IF NOT EXISTS idx_subscriptions_events ON subscriptions USING GIN (events);
 CREATE INDEX IF NOT EXISTS idx_events_dedup ON events(dedup_key);

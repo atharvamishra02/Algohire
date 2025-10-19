@@ -1,4 +1,4 @@
-// Test script to verify the webhook relay system with dummy data
+
 
 const BASE_URL = 'http://localhost:3001';
 
@@ -6,14 +6,14 @@ async function testWebhookSystem() {
   console.log('🚀 Testing AlgoHire Webhook Relay System\n');
 
   try {
-    // Step 1: Create a subscription
+   
     console.log('📋 Step 1: Creating a subscription...');
     const subscriptionResponse = await fetch(`${BASE_URL}/api/subscriptions`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         name: 'Test Webhook Service',
-        target_url: 'https://webhook.site/unique-id-here', // Replace with real webhook.site URL if you want to see actual delivery
+        target_url: 'https://webhook.site/unique-id-here', 
         events: ['user.created', 'user.updated'],
         secret: 'my-secret-key-123'
       })
@@ -29,7 +29,7 @@ async function testWebhookSystem() {
     console.log(`   Target: ${subscription.target_url}`);
     console.log(`   Events: ${subscription.events.join(', ')}\n`);
 
-    // Step 2: Send a test event
+ 
     console.log('📤 Step 2: Sending a test event...');
     const eventResponse = await fetch(`${BASE_URL}/api/events`, {
       method: 'POST',
@@ -53,11 +53,11 @@ async function testWebhookSystem() {
     console.log('✅ Event created:', event);
     console.log(`   Event ID: ${event.id}\n`);
 
-    // Step 3: Wait a moment for processing
+    
     console.log('⏳ Waiting 2 seconds for delivery processing...\n');
     await new Promise(resolve => setTimeout(resolve, 2000));
 
-    // Step 4: Check deliveries
+  
     console.log('📊 Step 3: Checking delivery status...');
     const deliveriesResponse = await fetch(`${BASE_URL}/api/deliveries`);
     
@@ -90,7 +90,7 @@ async function testWebhookSystem() {
       }
     }
 
-    // Step 5: List all subscriptions
+  
     console.log('\n📋 All Subscriptions:');
     const subsResponse = await fetch(`${BASE_URL}/api/subscriptions`);
     const allSubs = await subsResponse.json();
@@ -107,8 +107,8 @@ async function testWebhookSystem() {
     console.log('   4. Try creating more events and subscriptions!');
 
   } catch (error) {
-    console.error('❌ Test failed:', error.message);
-    console.error('\n💡 Troubleshooting:');
+    console.error(' Test failed:', error.message);
+    console.error('\n Troubleshooting:');
     console.error('   - Make sure Next.js dev server is running (npm run dev)');
     console.error('   - Make sure Redis is running');
     console.error('   - Make sure PostgreSQL is running');
@@ -116,5 +116,5 @@ async function testWebhookSystem() {
   }
 }
 
-// Run the test
+
 testWebhookSystem();

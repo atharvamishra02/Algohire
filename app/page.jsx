@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
-      {/* Header */}
+      
       <header className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -23,7 +23,7 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Hero Section */}
+    
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="text-center space-y-8">
           <div className="space-y-4">
@@ -55,7 +55,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Features Section */}
+      
         <div id="features" className="mt-32 grid md:grid-cols-3 gap-8">
           <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100">
             <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
@@ -94,7 +94,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Stats Section */}
+        
         <div className="mt-20 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl p-12 text-white">
           <div className="grid md:grid-cols-3 gap-8 text-center">
             <div>
@@ -113,7 +113,7 @@ export default function Home() {
         </div>
       </main>
 
-      {/* Footer */}
+
       <footer className="border-t mt-20 py-8 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-600">
           <p>Built with Next.js, Redis, PostgreSQL, and BullMQ</p>

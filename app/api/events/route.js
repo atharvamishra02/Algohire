@@ -3,7 +3,7 @@ import { query } from '../../../lib/db.js';
 import { deliveryQueue } from '../../../lib/queue.js';
 import { v4 as uuidv4 } from 'uuid';
 
-// deliveryQueue and redis are centralized
+
 
 export async function POST(req) {
   const body = await req.json();
@@ -28,7 +28,7 @@ export async function POST(req) {
         deliveriesQueued++;
       } catch (queueErr) {
         console.error('Queue add error:', queueErr);
-        // Continue even if queue fails
+      
       }
     }
 

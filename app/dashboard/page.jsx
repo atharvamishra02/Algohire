@@ -44,7 +44,7 @@ export default function DashboardPage() {
                   {d.status === 'failed' && (
                     <button onClick={async () => {
                       await fetch('/api/deliveries/retry', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ deliveryId: d.id }) });
-                      // refresh deliveries
+                     
                       const r = await fetch('/api/deliveries');
                       if (r.ok) setDel(await r.json());
                     }}>Retry</button>

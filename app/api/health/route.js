@@ -4,10 +4,10 @@ import redis from '../../../lib/redis.js';
 
 export async function GET() {
   try {
-    // quick DB ping
+  
     const r = await query('SELECT 1 as ok');
     const dbOk = r && r.rows && r.rows[0] && r.rows[0].ok === 1;
-    // quick redis ping
+    
     let redisOk = false;
     try {
       const pong = await redis.ping();
