@@ -1,0 +1,43 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:15
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: algo
+      POSTGRES_PASSWORD: algopass
+      POSTGRES_DB: algodb
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:7
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+
+  web:
+    build:
+      context: .
+    restart: unless-stopped
+    env_file: ./.env
+    ports:
+      - "3001:3000"
+    depends_on:
+      - postgres
+      - redis
+
+  worker:
+    build:
+      context: .
+    command: ["node","worker.js"]
+    restart: unless-stopped
+    env_file: ./.env
+    depends_on:
+      - postgres
+      - redis
+
+volumes:
+  pgdata:
